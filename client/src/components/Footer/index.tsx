@@ -13,8 +13,20 @@ const Footer = () => {
           <div className='w-full lg:w-1/2 p-4 text-center'>
             <h2 className='text-lg font-medium text-white'>Follow Us</h2>
             <div className='flex justify-center items-center space-x-4 mt-3'>
-              <i className='text-4xl text-gray-200 fa-brands fa-facebook'></i>
-              <i className='text-4xl text-gray-200 fa-brands fa-instagram'></i>
+              <a
+                href='https://www.facebook.com/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <i className='text-4xl text-gray-200 fa-brands fa-facebook'></i>
+              </a>
+              <a
+                href='https://www.instagram.com/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <i className='text-4xl text-gray-200 fa-brands fa-instagram'></i>
+              </a>
             </div>
           </div>
         </div>
