@@ -9,7 +9,7 @@ const Hero = ({ title, span, desc, button }: HeroProps) => {
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50'></div>
-      <div className='relative w-full h-full items-center flex flex-wrap justify-center'>
+      <div className='relative z-[100] w-full h-full items-center flex flex-wrap justify-center'>
         <div className='text-center w-full lg:w-1/2 max-w-xl py-10'>
           <h1 className='text-5xl lg:text-7xl text-white font-bold font-kanit tracking-wide'>
             {title}{' '}
