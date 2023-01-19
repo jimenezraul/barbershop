@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Men`s Services",
+    "image": "",
+    "descriptions": [
+      {
+        "title": "Haircuts",
+        "description": "Our skilled barbers use the latest techniques to provide you with a stylish and precise haircut. We offer a wide range of cuts for men, including classic, modern, and trendy styles."
+      },
+      {
+        "title": "Shaves",
+        "description": "Indulge in a traditional straight razor shave for the ultimate grooming experience. Our barbers use hot towels, pre-shave oils, and aftershave balms for a smooth and comfortable shave."
+      },
+      {
+        "title": "Beard grooming",
+        "description": "Keep your beard looking neat and well-groomed with our beard trimming and shaping services. We use high-quality clippers and scissors to sculpt the perfect shape for your beard."
+      }
+    ]
+  },
+  {
+    "title": "Kid`s Services",
+    "image": "",
+    "descriptions": [
+      {
+        "title": "Haircuts",
+        "description": "Our skilled barbers use the latest techniques to provide your child with a stylish and precise haircut. We offer a wide range of cuts for children, including classic, modern, and trendy styles."
+      },
+      {
+        "title": "Hair styling",
+        "description": "Whether your child needs a simple style for everyday wear or a special look for a special occasion, our barbers can help. We offer a range of styling services, including braids, updos, and more."
+      },
+      {
+        "title": "Specialized services for kids with special needs",
+        "description": "Our barbers are trained to cater to children with special needs, providing a calm and patient environment while cutting their hair."
+      }
+    ]
+  },
+  {
+    "title": "Other Services",
+    "image": "",
+    "descriptions": [
+      {
+        "title": "Shampoo and conditioning",
+        "description": "We offer shampoo and conditioning services to leave your hair clean, healthy and manageable."
+      },
+      {
+        "title": "Hot towel shave",
+        "description": "Indulge in a traditional hot towel shave for the ultimate grooming experience. Our barbers use hot towels, pre-shave oils, and aftershave balms for a smooth and comfortable shave."
+      },
+      {
+        "title": "Facial grooming",
+        "description": "We offer facial grooming services such as beard trimming, mustache shaping, and ear and nose hair trimming to keep your facial hair looking neat and well-groomed."
+      },
+      {
+        "title": "Eyebrow grooming",
+        "description": "We offer eyebrow grooming services such as shaping, trimming, and tinting to keep your eyebrows looking neat and well-groomed."
+      }
+    ]
+  }
+]

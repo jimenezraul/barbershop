@@ -1,4 +1,5 @@
 import heroImage from '../../assets/img/bg.png';
+import prices from './prices.json';
 
 const Prices = () => {
   return (
@@ -14,54 +15,26 @@ const Prices = () => {
           </h1>
         </div>
         <div className='flex flex-wrap'>
-          <div className='w-full lg:w-1/3 max-w-lg p-4'>
-            <div className='flex flex-col h-full rounded-lg shadow-lg p-6 border border-gray-800 backdrop-blur-sm'>
-              <div className='flex justify-center items-center mb-4'>
-                <h2 className='text-2xl font-medium text-white'>
-                  Man`s Services
-                </h2>
-              </div>
-              <div className='text-gray-400 flex justify-between'>
-                <p>Haircut</p> <p>25</p>
-              </div>
-              <div className='text-gray-400 mt-4 flex justify-between'>
-                <p>Haircut + Beard</p> <p>35</p>
-              </div>
-            </div>
-          </div>
-          <div className='w-full lg:w-1/3 max-w-lg p-4'>
-            <div className='flex flex-col h-full rounded-lg shadow-lg p-6 border border-gray-800 backdrop-blur-sm'>
-              <div className='flex justify-center items-center mb-4'>
-                <h2 className='text-2xl font-medium text-white'>
-                  Kid`s Services
-                </h2>
-              </div>
-              <div className='text-gray-400 flex justify-between'>
-                <p>Haircut (under 12)</p> <p>20</p>
-              </div>
-              <div className='text-gray-400 mt-4 flex justify-between'>
-                <p>Haircut + Design</p> <p>30+</p>
+          {prices.map((price, index) => (
+            <div key={index} className='w-full lg:w-1/3 max-w-lg p-4'>
+              <div className='relative flex flex-col space-y-3 h-full rounded-lg shadow-lg p-6 border border-gray-800 backdrop-blur-sm overflow-hidden'>
+                <div className='absolute bg-white top-0 bottom-0 left-0 right-0 opacity-5'></div>
+                <div className='flex justify-center items-center mb-4'>
+                  <h2 className='text-2xl font-medium text-white'>
+                    {price.title}
+                  </h2>
+                </div>
+                {price.services.map((service, index) => (
+                  <div
+                    key={index}
+                    className='text-gray-400 flex justify-between'
+                  >
+                    <p>{service.title}</p> <p>{service.price}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-          <div className='w-full lg:w-1/3 max-w-lg p-4'>
-            <div className='rounded-lg shadow-lg p-6 border border-gray-800 backdrop-blur-sm'>
-              <div className='flex justify-center items-center mb-4'>
-                <h2 className='text-2xl font-medium text-white'>
-                  Other Services
-                </h2>
-              </div>
-              <div className='text-gray-400 flex justify-between'>
-                <p>Eyebrows</p> <p>10</p>
-              </div>
-              <div className='text-gray-400 mt-4 flex justify-between'>
-                <p>Beard</p> <p>15</p>
-              </div>
-              <div className='text-gray-400 mt-4 flex justify-between'>
-                <p>Beard + Bigen</p> <p>25</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

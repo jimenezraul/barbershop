@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Man`s Services",
+    "services": [
+      {
+        "title": "Haircut",
+        "price": 25
+      },
+      {
+        "title": "Haircut + Beard",
+        "price": 35
+      }
+    ]
+  },
+  {
+    "title": "Kid`s Services",
+    "services": [
+      {
+        "title": "Haircut",
+        "price": 20
+      },
+      {
+        "title": "Haircut + Design",
+        "price": "30+"
+      }
+    ]
+  },
+  {
+    "title": "Other Services",
+    "services": [
+      {
+        "title": "Eyebrows",
+        "price": 10
+      },
+      {
+        "title": "Beard Trim",
+        "price": 15
+      },
+      {
+        "title": "Beard + Bigen",
+        "price": 25
+      }
+    ]
+  }
+]
