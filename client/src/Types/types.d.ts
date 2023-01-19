@@ -1,5 +1,4 @@
 interface HeroProps {
-  // optional property
   title?: string;
   subTitle?: string;
   span?: string;

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
-import useAutoHide from '../../hooks/useAutoHide';
+import useAutoHide from 'auto-hide-hook';
 
 const MobileNavbar = ({ isOpen, setShow }: NavProps) => {
   const ref = useRef(null);
@@ -10,11 +10,11 @@ const MobileNavbar = ({ isOpen, setShow }: NavProps) => {
     navigate(e);
   };
 
-  useAutoHide({ ref, setIsOpen: setShow });
+  useAutoHide(ref, setShow);
 
   return (
-      <div
-        ref={ref}
+    <div
+      ref={ref}
       className={`w-full ${
         isOpen ? 'translate-y-20 opacity-100' : '-translate-y-80 opacity-0'
       } lg:hidden absolute z-10 rounded-b-xl overflow-hidden transition transform duration-300 ease-in-out bg-black flex flex-col left-0 right-0 top-5 `}
