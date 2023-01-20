@@ -31,9 +31,21 @@ const Navbar = () => {
             onClick={toggle}
             className='flex flex-col space-y-1 items-center px-3 py-2 border rounded text-orange-200 border-orange-400 hover:text-white hover:border-orange-500'
           >
-            <div className={`${isOpen && 'rotate-45 translate-y-2'} w-6 transition-all ease-in-out h-1 bg-orange-400 rounded-full`}></div>
-            <div className={`${isOpen && 'opacity-0'} line-2 w-6 h-1 bg-orange-400 rounded-full`}></div>
-            <div className={`${isOpen && '-rotate-45 -translate-y-2'} transition-all ease-in-out line-3 w-6 h-1 bg-orange-400 rounded-full`}></div>
+            <div
+              className={`${
+                isOpen && 'rotate-45 translate-y-2'
+              } w-6 transition-all ease-in-out h-1 bg-orange-400 rounded-full`}
+            ></div>
+            <div
+              className={`${
+                isOpen && 'opacity-0'
+              } line-2 w-6 h-1 bg-orange-400 rounded-full`}
+            ></div>
+            <div
+              className={`${
+                isOpen && '-rotate-45 -translate-y-2'
+              } transition-all ease-in-out line-3 w-6 h-1 bg-orange-400 rounded-full`}
+            ></div>
           </button>
         </div>
         <MobileNavbar isOpen={isOpen} setShow={setIsOpen} />
@@ -63,6 +75,12 @@ const Navbar = () => {
           <Link to='/book-now'>
             <div className='font-bold text-2xl text-white bg-orange-500 hover:bg-orange-600 p-8'>
               Book Now
+            </div>
+          </Link>
+          {/* login */}
+          <Link to='/login'>
+            <div className='font-bold text-xl text-white  hover:text-orange-500 p-8'>
+              Login
             </div>
           </Link>
         </div>

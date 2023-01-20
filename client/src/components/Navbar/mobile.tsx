@@ -17,7 +17,7 @@ const MobileNavbar = ({ isOpen, setShow }: NavProps) => {
       ref={ref}
       className={`w-full ${
         isOpen ? 'translate-y-20 opacity-100' : '-translate-y-80 opacity-0'
-      } lg:hidden absolute z-10 rounded-b-xl overflow-hidden transition transform duration-300 ease-in-out bg-black flex flex-col left-0 right-0 top-5 `}
+      } lg:hidden absolute z-10 border border-gray-900 rounded-b-xl overflow-hidden transition transform duration-300 ease-in-out bg-black flex flex-col left-0 right-0 top-5 `}
     >
       <div className='text-sm lg:flex-grow'>
         <button
@@ -42,6 +42,11 @@ const MobileNavbar = ({ isOpen, setShow }: NavProps) => {
       <button onClick={() => handleClick('/book')} className='mt-5'>
         <div className='font-bold text-2xl text-white bg-orange-500 hover:bg-orange-600 p-8'>
           Book Now
+        </div>
+      </button>
+      <button onClick={() => handleClick('login')}>
+        <div className='font-bold text-xl text-white  hover:text-orange-500 p-8'>
+          Login
         </div>
       </button>
     </div>
