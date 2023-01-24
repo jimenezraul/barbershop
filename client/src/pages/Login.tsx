@@ -1,26 +1,52 @@
 import { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { Link } from 'react-router-dom';
-
+import validation from '@jimenezraul/form-validation';
+import inputs from '../utils/loginInputs.json';
 const initialState = {
   email: '',
   password: '',
+  error: {
+    email: '',
+    password: '',
+  },
 };
 
 const Login = () => {
   const [formState, setFormState] = useState<LoginFormState>(initialState);
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState('');
+  const [loading, setLoading] = useState(false);
   document.title = 'Login';
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setLoading(true);
+
     // Validate email and password
-    if (!formState.email || !formState.password) {
-      setError('Please enter your email and password');
+    const isValid = validation.validation(formState, setFormState);
+    
+    if (!isValid) {
+      setLoading(false);
       return;
     }
+
+    console.log(formState);
     // Send login request to server
     // ...
+  };
+
+  const handleformStateChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+      error: {
+        ...formState.error,
+        [name]: '',
+      },
+    });
+
+    if (errors) setErrors('');
   };
 
   return (
@@ -32,46 +58,42 @@ const Login = () => {
         <h2 className='text-3xl text-gray-700 text-center font-semibold font-kanit tracking-wider mb-4'>
           Login
         </h2>
-        {error && <div className='text-red-500 mb-2'>{error}</div>}
-        <div className='mb-4'>
-          <label
-            className='block text-gray-700 font-medium mb-2'
-            htmlFor='email'
-          >
-            Email
-          </label>
-          <input
-            className='border border-gray-400 p-2 rounded-lg w-full'
-            type='email'
-            id='email'
-            value={formState.email}
-            onChange={(e) =>
-              setFormState({ ...formState, email: e.target.value })
-            }
-          />
-        </div>
-        <div className='mb-4'>
-          <label
-            className='block text-gray-700 font-medium mb-2'
-            htmlFor='password'
-          >
-            Password
-          </label>
-          <input
-            className='border border-gray-400 p-2 rounded-lg w-full'
-            type='password'
-            id='password'
-            value={formState.password}
-            onChange={(e) =>
-              setFormState({ ...formState, password: e.target.value })
-            }
-          />
-        </div>
+
+        {inputs.map((input, index) => (
+          <div key={index}>
+            <div className='mb-4'>
+              <label
+                className='block text-gray-700 font-medium mb-2'
+                htmlFor='email'
+              >
+                {input.label}
+              </label>
+              <input
+                className='border border-gray-400 p-2 rounded-lg w-full'
+                type={input.type}
+                name={input.name}
+                value={formState[input.name as keyof LoginFormState['error']]}
+                onChange={(e) => handleformStateChange(e)}
+              />
+              {formState.error && (
+                <div className='text-red-500 my-2'>
+                  {formState.error[input.name as keyof LoginFormState['error']]}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {errors && <div className='text-red-500 mb-4'>{errors}</div>}
         <div className='mb-6 flex justify-between items-center'>
           <button
             type='submit'
-            className='bg-orange-500 text-xl text-white py-2 px-5 rounded-lg hover:bg-orange-600'
+            {...(loading && { disabled: true })}
+            // add loading animation
+            className={`bg-orange-500 transition-all ease-in-out text-xl text-white py-2 px-5 rounded-lg hover:bg-orade-600 ${loading &&
+              'opacity-50'}`}
           >
+            {loading && <i className='fas fa-spinner fa-spin mr-2'></i>}
             Login
           </button>
           <Link

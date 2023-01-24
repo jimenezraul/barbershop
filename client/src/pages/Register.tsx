@@ -55,14 +55,21 @@ const initialFormUseState = {
 const Register = () => {
   const [formState, setFormState] = useState<RegisterFormState>(initialState);
   const [regRes, setRegRes] = useState<RegisterUseState>(initialFormUseState);
+  const [loading, setLoading] = useState(false);
+
   document.title = 'Register';
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setLoading(true);
+
     // Validate form
     const isValid = validation.registerValidation(formState, setFormState);
 
-    if (!isValid) return;
+    if (!isValid) {
+      setLoading(false);
+      return;
+    }
 
     console.log(formState);
 
@@ -133,8 +140,11 @@ const Register = () => {
         <div className='mb-6 flex justify-between items-center'>
           <button
             type='submit'
-            className='bg-orange-500 text-xl text-white py-2 px-5 rounded-lg hover:bg-orange-600'
+            className={`bg-orange-500 text-xl text-white py-2 px-5 rounded-lg hover:bg-orange-600 ${
+              loading && 'opacity-50'
+            }`}
           >
+            {loading && <i className='fas fa-spinner fa-spin mr-2'></i>}
             Register
           </button>
         </div>

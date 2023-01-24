@@ -34,6 +34,10 @@ interface RegisterFormState {
 interface LoginFormState {
   email: string;
   password: string;
+  error: {
+    email: string;
+    password: string;
+  };
 }
 
 interface RegisterUseState {
