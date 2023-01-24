@@ -4,11 +4,16 @@ import BottomSection from '../components/BottomSection';
 
 const Home = () => {
   // set the title of the page
-  document.title = 'Next Level Barbershop';
-  
+  document.title = 'Home';
+
   return (
     <div>
-      <Hero title="Next Level" span="Barbershop" desc="Experience the Best in Men's Grooming at Our Barbershop." button='Learn More' />
+      <Hero
+        title='Next Level'
+        span='Barbershop'
+        desc="Experience the Best in Men's Grooming at Our Barbershop."
+        button='Learn More'
+      />
       <MiddleSection />
       <BottomSection />
     </div>

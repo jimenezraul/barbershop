@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>('');
-
+  document.title = "Forgot-Password"
+  
   const handleSubmit = (e: any) => {
     e.preventDefault();
     // Validate email and password

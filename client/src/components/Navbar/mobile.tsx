@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import useAutoHide from 'auto-hide-hook';
 
-const MobileNavbar = ({ isOpen, setShow }: NavProps) => {
+const MobileNavbar = ({ isOpen, setShow }: NavProps): JSX.Element => {
   const ref = useRef(null);
   const navigate = useNavigate();
   const handleClick = (e: string) => {
@@ -39,11 +39,17 @@ const MobileNavbar = ({ isOpen, setShow }: NavProps) => {
           Team
         </button>
       </div>
-      <button onClick={() => handleClick('/book')} className='mt-5 font-bold text-2xl text-white bg-orange-500 hover:bg-orange-600 p-4'>
-          Book Now
+      <button
+        onClick={() => handleClick('/book')}
+        className='mt-5 font-bold text-2xl text-white bg-orange-500 hover:bg-orange-600 p-4'
+      >
+        Book Now
       </button>
-      <button onClick={() => handleClick('login')} className='font-bold text-xl text-white  hover:text-orange-500 p-8'>
-          Login
+      <button
+        onClick={() => handleClick('login')}
+        className='font-bold text-xl text-white  hover:text-orange-500 p-8'
+      >
+        Login
       </button>
     </div>
   );

@@ -2,15 +2,20 @@ import { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { Link } from 'react-router-dom';
 
+const initialState = {
+  email: '',
+  password: '',
+};
+
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formState, setFormState] = useState<LoginFormState>(initialState);
   const [error, setError] = useState('');
+  document.title = 'Login';
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     // Validate email and password
-    if (!email || !password) {
+    if (!formState.email || !formState.password) {
       setError('Please enter your email and password');
       return;
     }
@@ -24,7 +29,9 @@ const Login = () => {
         className='bg-gray-50 p-10 rounded-lg shadow-lg w-full max-w-lg'
         onSubmit={handleSubmit}
       >
-        <h2 className='text-3xl text-gray-700 text-center font-semibold font-kanit tracking-wider mb-4'>Login</h2>
+        <h2 className='text-3xl text-gray-700 text-center font-semibold font-kanit tracking-wider mb-4'>
+          Login
+        </h2>
         {error && <div className='text-red-500 mb-2'>{error}</div>}
         <div className='mb-4'>
           <label
@@ -37,8 +44,10 @@ const Login = () => {
             className='border border-gray-400 p-2 rounded-lg w-full'
             type='email'
             id='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formState.email}
+            onChange={(e) =>
+              setFormState({ ...formState, email: e.target.value })
+            }
           />
         </div>
         <div className='mb-4'>
@@ -52,8 +61,10 @@ const Login = () => {
             className='border border-gray-400 p-2 rounded-lg w-full'
             type='password'
             id='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formState.password}
+            onChange={(e) =>
+              setFormState({ ...formState, password: e.target.value })
+            }
           />
         </div>
         <div className='mb-6 flex justify-between items-center'>
@@ -63,12 +74,18 @@ const Login = () => {
           >
             Login
           </button>
-          <Link to='/register' className='text-orange-500 text-xl hover:text-orange-600'>
+          <Link
+            to='/register'
+            className='text-orange-500 text-xl hover:text-orange-600'
+          >
             Register
           </Link>
         </div>
         <div className='mb-4 text-end'>
-          <Link to='/forgot-password' className='text-orange-500 hover:text-orange-600'>
+          <Link
+            to='/forgot-password'
+            className='text-orange-500 hover:text-orange-600'
+          >
             Forgot Password?
           </Link>
         </div>

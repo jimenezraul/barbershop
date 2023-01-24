@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import heroImage from '../../assets/img/bg.png';
 import heroMan from '../../assets/img/hero-man-pic.png';
 
-const Hero = ({ title, span, desc, button }: HeroProps) => {
+const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
   return (
     <section
       className='bg-cover z-50 bg-center flex lg:h-[40vh] relative'
@@ -12,8 +12,7 @@ const Hero = ({ title, span, desc, button }: HeroProps) => {
       <div className='relative w-full h-full items-center flex flex-wrap justify-center'>
         <div className='text-center w-full lg:w-1/2 max-w-xl py-10'>
           <h1 className='text-5xl lg:text-7xl text-white font-bold font-kanit tracking-wide p-4'>
-            {title}{' '}
-            <br />
+            {title} <br />
             <span className='text-orange-400 mt-6 tracking-widest'>{span}</span>
           </h1>
           <p className='text-xl text-white mt-4 p-3'>{desc}</p>

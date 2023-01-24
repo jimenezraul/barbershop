@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { Link } from 'react-router-dom';
+import validation from '@jimenezraul/form-validation';
 
 const registerInput = [
   {
@@ -45,15 +46,32 @@ const initialState = {
   },
 };
 
+const initialFormUseState = {
+  success: false,
+  message: '',
+  subMessage: '',
+};
+
 const Register = () => {
   const [formState, setFormState] = useState<RegisterFormState>(initialState);
-
-  const [errors, setErrors] = useState<String>('');
+  const [regRes, setRegRes] = useState<RegisterUseState>(initialFormUseState);
+  document.title = 'Register';
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Validate email and password
+    // Validate form
+    const isValid = validation.registerValidation(formState, setFormState);
+
+    if (!isValid) return;
+
     console.log(formState);
+
+    // example of how to set registration response
+    // setRegRes({
+    //   success: false,
+    //   message: 'Registration failed',
+    //   subMessage: 'Please try again',
+    // });
     // Send login request to server
     // ...
   };
@@ -69,7 +87,7 @@ const Register = () => {
       },
     });
 
-    if (errors) setErrors('');
+    if (regRes) setRegRes(initialFormUseState);
   };
 
   return (
@@ -81,7 +99,6 @@ const Register = () => {
         <h2 className='text-3xl text-gray-700 text-center font-semibold font-kanit tracking-wider mb-4'>
           Register
         </h2>
-        {errors && <div className='text-red-500 mb-2'>{errors}</div>}
 
         {registerInput.map(({ name, label, type }, index) => (
           <div key={index} className='mb-4'>
@@ -98,8 +115,21 @@ const Register = () => {
               value={formState[name as keyof RegisterFormState['error']]}
               onChange={(e) => handleChange(e)}
             />
+            {formState.error && (
+              <div className='text-red-500 mb-2'>
+                {formState.error[name as keyof RegisterFormState['error']]}
+              </div>
+            )}
           </div>
         ))}
+        <div
+          className={`${
+            regRes.success ? 'text-green-500' : 'text-red-500'
+          } text-lg text-center mb-4`}
+        >
+          {regRes.message} <br />
+          {regRes.subMessage}
+        </div>
         <div className='mb-6 flex justify-between items-center'>
           <button
             type='submit'

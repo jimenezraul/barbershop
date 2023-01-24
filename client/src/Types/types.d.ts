@@ -30,3 +30,14 @@ interface RegisterFormState {
     confirm_password: string;
   };
 }
+
+interface LoginFormState {
+  email: string;
+  password: string;
+}
+
+interface RegisterUseState {
+  success: boolean;
+  message: string;
+  subMessage: string;
+}

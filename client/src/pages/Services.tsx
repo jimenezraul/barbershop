@@ -3,7 +3,7 @@ import ShopServices from '../components/ShopServices';
 
 const Services = () => {
   // set page title
-  document.title = 'Services | Next Level Barber Shop';
+  document.title = 'Services';
 
   return (
     <div>
