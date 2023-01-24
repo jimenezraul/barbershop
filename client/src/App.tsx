@@ -4,15 +4,17 @@ import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <div className='bg-black flex flex-col flex-grow'>
+    <div className='bg-black flex flex-col h-screen'>
       <Router>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          < Route path='/services' element={<Services />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
         <Footer />
       </Router>
