@@ -15,3 +15,18 @@ interface AutoHideProps {
   ref: React.RefObject<HTMLDivElement>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+interface RegisterFormState {
+  given_name: string;
+  family_name: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+  error: {
+    given_name: string;
+    family_name: string;
+    email: string;
+    password: string;
+    confirm_password: string;
+  };
+}
