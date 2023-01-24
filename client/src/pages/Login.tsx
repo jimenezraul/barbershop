@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,12 +19,12 @@ const Login = () => {
   };
 
   return (
-    <div className='flex justify-center items-center flex-1 px-4'>
+    <div className='flex bg-gray-200 justify-center items-center flex-1 px-4'>
       <form
-        className='bg-gray-200 p-6 rounded-lg shadow-md w-full max-w-lg'
+        className='bg-gray-50 p-10 rounded-lg shadow-lg w-full max-w-lg'
         onSubmit={handleSubmit}
       >
-        <h2 className='text-3xl text-center font-medium mb-4'>Login</h2>
+        <h2 className='text-3xl text-gray-700 text-center font-semibold font-kanit tracking-wider mb-4'>Login</h2>
         {error && <div className='text-red-500 mb-2'>{error}</div>}
         <div className='mb-4'>
           <label
@@ -58,13 +59,18 @@ const Login = () => {
         <div className='mb-6 flex justify-between items-center'>
           <button
             type='submit'
-            className='bg-orange-500 text-white p-2 rounded-lg hover:bg-orange-600'
+            className='bg-orange-500 text-xl text-white py-2 px-5 rounded-lg hover:bg-orange-600'
           >
             Login
           </button>
-          <a href='#' className='text-orange-500 hover:text-orange-600'>
+          <Link to='/register' className='text-orange-500 text-xl hover:text-orange-600'>
+            Register
+          </Link>
+        </div>
+        <div className='mb-4 text-end'>
+          <Link to='/forgot-password' className='text-orange-500 hover:text-orange-600'>
             Forgot Password?
-          </a>
+          </Link>
         </div>
         <div className='relative flex py-5 items-center'>
           <div className='flex-grow border-t border-gray-500'></div>
@@ -75,6 +81,9 @@ const Login = () => {
           <GoogleLogin
             onSuccess={(response) => console.log(response)}
             useOneTap
+            width='250'
+            text='signin_with'
+            size='large'
           />
         </div>
       </form>
