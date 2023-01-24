@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   return (
-    <div className='flex bg-gray-200 justify-center items-center flex-1 px-4'>
+    <div className='flex bg-gray-200 justify-center items-center flex-1 px-4 py-10'>
       <form
         className='bg-gray-50 p-10 rounded-lg shadow-lg w-full max-w-lg'
         onSubmit={handleSubmit}

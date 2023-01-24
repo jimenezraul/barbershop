@@ -5,7 +5,7 @@ import heroMan from '../../assets/img/hero-man-pic.png';
 const Hero = ({ title, span, desc, button }: HeroProps) => {
   return (
     <section
-      className='bg-cover z-50 bg-center flex  lg:h-[40vh] relative'
+      className='bg-cover z-50 bg-center flex lg:h-[40vh] relative'
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50'></div>
@@ -36,7 +36,7 @@ const Hero = ({ title, span, desc, button }: HeroProps) => {
           className='w-full h-full'
         >
           <path
-            d='M-15.15,152.47 C241.53,97.22 359.47,186.03 502.25,125.83 L500.00,150.00 L0.00,150.00 Z'
+            d='M-5.92,147.69 C153.01,109.88 318.93,183.46 505.72,122.80 L500.00,150.14 L-0.00,150.14 Z'
             className='fill-gray-200 stroke-none'
           ></path>
         </svg>

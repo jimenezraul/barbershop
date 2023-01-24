@@ -7,11 +7,11 @@ const Home = () => {
   document.title = 'Next Level Barbershop';
   
   return (
-    <>
+    <div>
       <Hero title="Next Level" span="Barbershop" desc="Experience the Best in Men's Grooming at Our Barbershop." button='Learn More' />
       <MiddleSection />
       <BottomSection />
-    </>
+    </div>
   );
 };
 
