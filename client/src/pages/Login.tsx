@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
+import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import validation from '@jimenezraul/form-validation';
 import inputs from '../utils/loginInputs.json';
+import GoogleLoginButton from '../components/GoogleLogin';
 const initialState = {
   email: '',
   password: '',
@@ -13,6 +13,7 @@ const initialState = {
 };
 
 const Login = () => {
+  const { loginValidation } = validation;
   const [formState, setFormState] = useState<LoginFormState>(initialState);
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,10 +22,9 @@ const Login = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
-
     // Validate email and password
-    const isValid = validation.validation(formState, setFormState);
-    
+    const isValid = loginValidation(formState, setFormState);
+
     if (!isValid) {
       setLoading(false);
       return;
@@ -35,8 +35,8 @@ const Login = () => {
     // ...
   };
 
-  const handleformStateChange = (e: any) => {
-    const { name, value } = e.target;
+  const handleformStateChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
     setFormState({
       ...formState,
       [name]: value,
@@ -83,32 +83,34 @@ const Login = () => {
             </div>
           </div>
         ))}
-
         {errors && <div className='text-red-500 mb-4'>{errors}</div>}
         <div className='mb-6 flex justify-between items-center'>
           <button
             type='submit'
             {...(loading && { disabled: true })}
             // add loading animation
-            className={`bg-orange-500 transition-all ease-in-out text-xl text-white py-2 px-5 rounded-lg hover:bg-orade-600 ${loading &&
-              'opacity-50'}`}
+            className={`bg-orange-500 transition-all ease-in-out text-xl text-white py-2 px-5 rounded-lg hover:bg-orade-600 ${
+              loading && 'opacity-50'
+            }`}
           >
             {loading && <i className='fas fa-spinner fa-spin mr-2'></i>}
             Login
           </button>
           <Link
-            to='/register'
-            className='text-orange-500 text-xl hover:text-orange-600'
-          >
-            Register
-          </Link>
-        </div>
-        <div className='mb-4 text-end'>
-          <Link
             to='/forgot-password'
             className='text-orange-500 hover:text-orange-600'
           >
             Forgot Password?
+          </Link>
+        </div>
+        <div className='mb-4 text-center'>
+          <span className='text-gray-500'>Don't have an account?</span>
+          <Link
+            to='/register'
+            className='text-orange-500 hover:text-orange-600'
+          >
+            {' '}
+            Register
           </Link>
         </div>
         <div className='relative flex py-5 items-center'>
@@ -117,13 +119,7 @@ const Login = () => {
           <div className='flex-grow border-t border-gray-500'></div>
         </div>
         <div className='flex justify-center items-center'>
-          <GoogleLogin
-            onSuccess={(response) => console.log(response)}
-            useOneTap
-            width='250'
-            text='signin_with'
-            size='large'
-          />
+          <GoogleLoginButton />
         </div>
       </form>
     </div>

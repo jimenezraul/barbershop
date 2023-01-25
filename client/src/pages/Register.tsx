@@ -1,35 +1,8 @@
-import { useState, ChangeEvent } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
+import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import validation from '@jimenezraul/form-validation';
-
-const registerInput = [
-  {
-    name: 'given_name',
-    label: 'First Name',
-    type: 'text',
-  },
-  {
-    name: 'family_name',
-    label: 'Last Name',
-    type: 'text',
-  },
-  {
-    name: 'email',
-    label: 'Email',
-    type: 'email',
-  },
-  {
-    name: 'password',
-    label: 'Password',
-    type: 'password',
-  },
-  {
-    name: 'confirm_password',
-    label: 'Confirm Password',
-    type: 'password',
-  },
-];
+import inputs from '../utils/registrationInputs.json';
+import GoogleLoginButton from '../components/GoogleLogin';
 
 const initialState = {
   given_name: '',
@@ -53,18 +26,19 @@ const initialFormUseState = {
 };
 
 const Register = () => {
+  const { registerValidation } = validation;
   const [formState, setFormState] = useState<RegisterFormState>(initialState);
-  const [regRes, setRegRes] = useState<RegisterUseState>(initialFormUseState);
+  const [regRes, setRegRes] = useState<RegisterResponse>(initialFormUseState);
   const [loading, setLoading] = useState(false);
 
   document.title = 'Register';
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     // Validate form
-    const isValid = validation.registerValidation(formState, setFormState);
+    const isValid = registerValidation(formState, setFormState);
 
     if (!isValid) {
       setLoading(false);
@@ -76,20 +50,29 @@ const Register = () => {
     // example of how to set registration response
     // setRegRes({
     //   success: false,
-    //   message: 'Registration failed',
+    //   message: 'Something went wrong',
     //   subMessage: 'Please try again',
     // });
     // Send login request to server
     // ...
   };
 
-  const handleChange = (e: ChangeEvent) => {
-    const { name, value } = e.target as HTMLInputElement;
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    let error = {};
+    // if name is equal to password or confirm_password then set both to empty string at the same time
+    if (name === 'password' || name === 'confirm_password') {
+      error = {
+        password: '',
+        confirm_password: '',
+      };
+    }
     setFormState({
       ...formState,
       [name]: value,
       error: {
         ...formState.error,
+        ...error,
         [name]: '',
       },
     });
@@ -107,36 +90,40 @@ const Register = () => {
           Register
         </h2>
 
-        {registerInput.map(({ name, label, type }, index) => (
-          <div key={index} className='mb-4'>
-            <label
-              className='block text-gray-700 font-medium mb-2'
-              htmlFor={label}
-            >
-              {label}
-            </label>
-            <input
-              className='border border-gray-400 p-2 rounded-lg w-full'
-              type={type}
-              name={name}
-              value={formState[name as keyof RegisterFormState['error']]}
-              onChange={(e) => handleChange(e)}
-            />
-            {formState.error && (
-              <div className='text-red-500 mb-2'>
-                {formState.error[name as keyof RegisterFormState['error']]}
-              </div>
-            )}
+        {inputs.map(
+          ({ name, label, type }: RegistrationInputs, index: number) => (
+            <div key={index} className='mb-4'>
+              <label
+                className='block text-gray-700 font-medium mb-2'
+                htmlFor={label}
+              >
+                {label}
+              </label>
+              <input
+                className='border border-gray-400 p-2 rounded-lg w-full'
+                type={type}
+                name={name}
+                value={formState[name as keyof RegisterFormState['error']]}
+                onChange={(e) => handleChange(e)}
+              />
+              {formState.error && (
+                <div className='text-red-500 mb-2'>
+                  {formState.error[name as keyof RegisterFormState['error']]}
+                </div>
+              )}
+            </div>
+          )
+        )}
+        {regRes.message && (
+          <div
+            className={`${
+              regRes.success ? 'text-green-500' : 'text-red-500'
+            } text-lg text-center mb-4`}
+          >
+            {regRes.message} <br />
+            {regRes.subMessage}
           </div>
-        ))}
-        <div
-          className={`${
-            regRes.success ? 'text-green-500' : 'text-red-500'
-          } text-lg text-center mb-4`}
-        >
-          {regRes.message} <br />
-          {regRes.subMessage}
-        </div>
+        )}
         <div className='mb-6 flex justify-between items-center'>
           <button
             type='submit'
@@ -160,13 +147,7 @@ const Register = () => {
           <div className='flex-grow border-t border-gray-500'></div>
         </div>
         <div className='flex justify-center items-center'>
-          <GoogleLogin
-            onSuccess={(response) => console.log(response)}
-            useOneTap
-            width='250'
-            text='signup_with'
-            size='large'
-          />
+          <GoogleLoginButton />
         </div>
       </form>
     </div>

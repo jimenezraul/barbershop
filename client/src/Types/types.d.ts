@@ -40,8 +40,14 @@ interface LoginFormState {
   };
 }
 
-interface RegisterUseState {
+interface RegisterResponse {
   success: boolean;
   message: string;
   subMessage: string;
+}
+
+interface RegistrationInputs {
+  name: string;
+  label: string;
+  type: string;
 }
