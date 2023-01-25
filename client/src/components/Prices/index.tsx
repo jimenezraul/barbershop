@@ -17,7 +17,7 @@ const Prices = () => {
         <div className='flex flex-wrap'>
           {prices.map((price, index) => (
             <div key={index} className='w-full lg:w-1/3 max-w-lg p-4'>
-              <div className='relative flex flex-col space-y-3 h-full rounded-lg shadow-lg p-6 border border-gray-800 backdrop-blur-sm overflow-hidden'>
+              <div className='relative flex flex-col space-y-3 h-full rounded-lg shadow-lg p-6 backdrop-blur overflow-hidden'>
                 <div className='absolute bg-white top-0 bottom-0 left-0 right-0 opacity-5'></div>
                 <div className='flex justify-center items-center mb-4'>
                   <h2 className='text-2xl font-medium text-white'>

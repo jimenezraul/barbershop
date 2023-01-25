@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import validation from '@jimenezraul/form-validation';
 import inputs from '../utils/loginInputs.json';
 import GoogleLoginButton from '../components/GoogleLogin';
+import heroImage from '../assets/img/bg.png';
+
 const initialState = {
   email: '',
   password: '',
@@ -50,12 +52,17 @@ const Login = () => {
   };
 
   return (
-    <div className='flex bg-gray-200 justify-center items-center flex-1 px-4 py-10'>
+    <div
+      style={{ backgroundImage: `url(${heroImage})` }}
+      className='bg-cover flex bg-gray-200 justify-center items-center flex-1 px-4 py-10 relative'
+    >
+      <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <form
-        className='bg-gray-50 p-10 rounded-lg shadow-lg w-full max-w-lg'
+        className='backdrop-blur-sm lg:backdrop-blur overflow-hidden  relative p-10 z-40 rounded-lg shadow-lg w-full max-w-lg'
         onSubmit={handleSubmit}
       >
-        <h2 className='text-3xl text-gray-700 text-center font-semibold font-kanit tracking-wider mb-4'>
+        <div className='absolute -z-10 top-0 right-0 bottom-0 left-0 bg-white opacity-10 p-4'></div>
+        <h2 className='text-3xl text-gray-200 text-center font-semibold font-kanit tracking-wider mb-4'>
           Login
         </h2>
 
@@ -63,7 +70,7 @@ const Login = () => {
           <div key={index}>
             <div className='mb-4'>
               <label
-                className='block text-gray-700 font-medium mb-2'
+                className='block text-gray-200 font-medium mb-2'
                 htmlFor='email'
               >
                 {input.label}
@@ -88,7 +95,6 @@ const Login = () => {
           <button
             type='submit'
             {...(loading && { disabled: true })}
-            // add loading animation
             className={`bg-orange-500 transition-all ease-in-out text-xl text-white py-2 px-5 rounded-lg hover:bg-orade-600 ${
               loading && 'opacity-50'
             }`}
@@ -104,13 +110,12 @@ const Login = () => {
           </Link>
         </div>
         <div className='mb-4 text-center'>
-          <span className='text-gray-500'>Don't have an account?</span>
+          <span className='text-gray-400 mr-2'>Don't have an account?</span>
           <Link
-            to='/register'
+            to='/signup'
             className='text-orange-500 hover:text-orange-600'
           >
-            {' '}
-            Register
+            Sign Up
           </Link>
         </div>
         <div className='relative flex py-5 items-center'>

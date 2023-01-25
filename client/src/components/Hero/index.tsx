@@ -5,7 +5,7 @@ import heroMan from '../../assets/img/hero-man-pic.png';
 const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
   return (
     <section
-      className='bg-cover z-50 bg-center flex lg:h-[40vh] relative'
+      className='bg-cover z-50 bg-center flex justify-center items-center lg:min-h-[40vh] relative'
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50'></div>
