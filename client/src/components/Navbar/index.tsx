@@ -1,11 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import MobileNavbar from './mobile';
+import Button from '../Button';
+import navMenu from './menu.json';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const handleClick = (e: string) => {
+    navigate(e);
+  };
 
   return (
     <>
@@ -58,25 +65,16 @@ const Navbar = () => {
           <div
             className={`z-50 w-full hidden flex-grow lg:flex lg:items-center lg:w-auto`}
           >
-            <div className='text-sm lg:flex-grow'>
-              <Link
-                to='/services'
-                className='px-6 lg:p-0 text-xl block mt-4 lg:inline-block lg:mt-0 text-orange-400 hover:text-orange-200 mr-4'
-              >
-                Services
-              </Link>
-              <Link
-                to='/about'
-                className='px-6 lg:p-0 text-xl block mt-4 lg:inline-block lg:mt-0 text-orange-400 hover:text-orange-200 mr-4'
-              >
-                About
-              </Link>
-              <Link
-                to='/team'
-                className='px-6 lg:p-0 text-xl block mt-4 lg:inline-block lg:mt-0 text-orange-400 hover:text-orange-200'
-              >
-                Team
-              </Link>
+            <div className='flex text-sm lg:flex-grow'>
+              {navMenu.map((item, index) => (
+                <Button
+                  key={index}
+                  type='button'
+                  onClick={() => handleClick(item.path)}
+                  className='px-6 text-xl block mt-4 text-orange-400 hover:text-orange-200 bg-transparent hover:bg-transparent'
+                  children={item.page}
+                />
+              ))}
             </div>
             <Link to='/book-now'>
               <div className='font-bold text-2xl text-white bg-orange-500 hover:bg-orange-600 p-8'>

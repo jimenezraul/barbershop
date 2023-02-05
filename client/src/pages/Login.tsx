@@ -1,9 +1,10 @@
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import validation from '@jimenezraul/form-validation';
-import inputs from '../utils/loginInputs.json';
+import { loginInputForm } from '../utils/inputForms';
 import GoogleLoginButton from '../components/GoogleLogin';
 import heroImage from '../assets/img/bg.png';
+import Button from '../components/Button';
 
 const initialState = {
   email: '',
@@ -66,7 +67,7 @@ const Login = () => {
           Login
         </h2>
 
-        {inputs.map((input, index) => (
+        {loginInputForm.map((input, index) => (
           <div key={index}>
             <div className='mb-4'>
               <label
@@ -92,16 +93,7 @@ const Login = () => {
         ))}
         {errors && <div className='text-red-500 mb-4'>{errors}</div>}
         <div className='mb-6 flex justify-between items-center'>
-          <button
-            type='submit'
-            {...(loading && { disabled: true })}
-            className={`bg-orange-500 transition-all ease-in-out text-xl text-white py-2 px-5 rounded-lg hover:bg-orade-600 ${
-              loading && 'opacity-50'
-            }`}
-          >
-            {loading && <i className='fas fa-spinner fa-spin mr-2'></i>}
-            Login
-          </button>
+          <Button type='submit' loading={loading} children='Login' />
           <Link
             to='/forgot-password'
             className='text-orange-500 hover:text-orange-600'
@@ -111,10 +103,7 @@ const Login = () => {
         </div>
         <div className='mb-4 text-center'>
           <span className='text-gray-400 mr-2'>Don't have an account?</span>
-          <Link
-            to='/signup'
-            className='text-orange-500 hover:text-orange-600'
-          >
+          <Link to='/signup' className='text-orange-500 hover:text-orange-600'>
             Sign Up
           </Link>
         </div>

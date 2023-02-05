@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import heroImage from '../assets/img/bg.png';
-
+import Button from '../components/Button';
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>('');
   document.title = "Forgot-Password | Next Level"
@@ -39,12 +39,7 @@ const ForgotPassword = () => {
           />
         </div>
         <div className='mb-6 flex justify-between items-center'>
-          <button
-            type='submit'
-            className='bg-orange-500 text-xl text-white py-2 px-5 rounded-lg hover:bg-orange-600'
-          >
-            Send Reset Email
-          </button>
+          <Button type='submit' children='Send Reset Email' />
         </div>
       </form>
     </div>

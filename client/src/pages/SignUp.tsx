@@ -1,10 +1,10 @@
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import validation from '@jimenezraul/form-validation';
-import inputs from '../utils/registrationInputs.json';
+import { registerInputForm } from '../utils/inputForms';
 import GoogleLoginButton from '../components/GoogleLogin';
 import heroImage from '../assets/img/bg.png';
-
+import Button from '../components/Button';
 const initialState = {
   given_name: '',
   family_name: '',
@@ -96,7 +96,7 @@ const Register = () => {
           Sign Up
         </h2>
 
-        {inputs.map(
+        {registerInputForm.map(
           ({ name, label, type }: RegistrationInputs, index: number) => (
             <div key={index} className='mb-4'>
               <label
@@ -131,15 +131,7 @@ const Register = () => {
           </div>
         )}
         <div className='mb-6 flex justify-between items-center'>
-          <button
-            type='submit'
-            className={`bg-orange-500 text-xl text-white py-2 px-5 rounded-lg hover:bg-orange-600 ${
-              loading && 'opacity-50'
-            }`}
-          >
-            {loading && <i className='fas fa-spinner fa-spin mr-2'></i>}
-            Register
-          </button>
+          <Button type='submit' loading={loading} children='Sign Up' />
         </div>
         <div className='mb-4 text-center'>
           <span className='text-gray-400 mr-2'>Already have an account?</span>

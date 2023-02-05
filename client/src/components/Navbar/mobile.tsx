@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import useAutoHide from 'auto-hide-hook';
-
+import navMenu from './menu.json';
+import Button from '../Button';
 const MobileNavbar = ({ isOpen, setShow }: NavProps): JSX.Element => {
   const ref = useRef(null);
   const navigate = useNavigate();
@@ -20,24 +21,15 @@ const MobileNavbar = ({ isOpen, setShow }: NavProps): JSX.Element => {
       } lg:hidden absolute z-10 overflow-hidden shadow-lg transition transform duration-300 ease-in-out bg-black flex flex-col left-0 right-0 top-5 `}
     >
       <div className='text-sm flex flex-col'>
-        <button
-          onClick={() => handleClick('/services')}
-          className='px-6 text-center text-xl block mt-4 text-orange-400 hover:text-orange-200'
-        >
-          Services
-        </button>
-        <button
-          onClick={() => handleClick('/about')}
-          className='px-6 text-xl block mt-4 text-orange-400 hover:text-orange-200'
-        >
-          About
-        </button>
-        <button
-          onClick={() => handleClick('/team')}
-          className='px-6 text-xl mt-4 text-orange-400 hover:text-orange-200'
-        >
-          Team
-        </button>
+        {navMenu.map((item, index) => (
+          <Button
+            key={index}
+            type='button'
+            onClick={() => handleClick(item.path)}
+            className='px-6 text-xl block mt-4 text-orange-400 hover:text-orange-200 bg-transparent hover:bg-transparent'
+            children={item.page}
+          />
+        ))}
       </div>
       <button
         onClick={() => handleClick('/book')}

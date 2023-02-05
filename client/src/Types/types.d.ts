@@ -51,3 +51,16 @@ interface RegistrationInputs {
   label: string;
   type: string;
 }
+
+interface Button {
+  children: string;
+  loading?: boolean;
+  type: "button" | "submit" | "reset" | undefined
+  onClick?: () => void;
+  className?: string;
+}
+
+interface NavMenu {
+  page: string;
+  path: string;
+}

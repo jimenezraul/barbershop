@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import heroImage from '../../assets/img/bg.png';
 import heroMan from '../../assets/img/hero-man-pic.png';
+import Button from '../Button';
 
 const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
   return (
@@ -18,9 +19,11 @@ const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
           <p className='text-xl text-white mt-4 p-3'>{desc}</p>
           {button && (
             <Link to='/services'>
-              <button className='relative z-[20] transtition border hover:bg-white hover:text-orange-400 text-2xl font-bold text-white px-6 py-2 rounded-lg mt-6'>
-                {button}
-              </button>
+              <Button
+                children={button}
+                type='button'
+                className='relative bg-transparent z-[20] transtition border hover:bg-white hover:text-orange-400 text-2xl font-bold text-white px-6 py-2 rounded-lg mt-6'
+              />
             </Link>
           )}
         </div>
