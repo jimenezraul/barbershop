@@ -1,6 +1,6 @@
 const Profile = () => {
   return (
-    <div>
+    <div className="bg-white flex h-full">
       <h1>Profile</h1>
     </div>
   );

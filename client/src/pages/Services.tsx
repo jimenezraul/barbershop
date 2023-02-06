@@ -6,7 +6,7 @@ const Services = () => {
   document.title = 'Services';
 
   return (
-    <div>
+    <div className='h-full'>
       <Hero
         title='Experience the Art of Grooming'
         span=''

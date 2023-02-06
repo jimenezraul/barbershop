@@ -7,7 +7,7 @@ const Home = () => {
   document.title = 'Home';
 
   return (
-    <div>
+    <div className='flex flex-col h-full'>
       <Hero
         title='Next Level'
         span='Barbershop'

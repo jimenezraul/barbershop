@@ -1,4 +1,4 @@
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 const Profile = lazy(() => import('../pages/Profile'));
@@ -17,7 +17,6 @@ export const privateRoutes = [
   {
     path: '/',
     element: <Private />,
-    children: [{ path: '/', element: <Profile /> }],
+    children: [{ path: '/profile', element: <Profile /> }],
   },
-  { path: '*', element: <Navigate to='.' /> },
 ];

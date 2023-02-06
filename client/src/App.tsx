@@ -5,7 +5,7 @@ import AppRoutes from './routes';
 
 function App() {
   return (
-    <div className='bg-black flex flex-col h-screen'>
+    <div className='bg-black flex flex-col justify-between h-screen'>
       <Router>
         <Navbar />
         <AppRoutes />
