@@ -7,12 +7,13 @@ const Home = () => {
   document.title = 'Home';
 
   return (
-    <div className='flex flex-col h-full'>
+    <div className='flex flex-col'>
       <Hero
         title='Next Level'
-        span='Barbershop'
+        subTitle='Barbershop'
         desc="Experience the Best in Men's Grooming at Our Barbershop."
         button='Learn More'
+        image
       />
       <MiddleSection />
       <BottomSection />

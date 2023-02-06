@@ -8,11 +8,7 @@
         "path": "/services"
     },
     {
-        "page": "About",
+        "page": "About Us",
         "path": "/about"
-    },
-    {
-        "page": "Team",
-        "path": "/team"
     }
 ]

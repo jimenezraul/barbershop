@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <div
       style={{ backgroundImage: `url(${heroImage})` }}
-      className='bg-cover flex bg-gray-200 justify-center items-center flex-1 px-4 py-10 relative h-full'
+      className='bg-cover flex bg-gray-200 justify-center items-center flex-1 px-4 py-10 relative'
     >
       <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
       <form

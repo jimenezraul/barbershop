@@ -1,9 +1,9 @@
 interface HeroProps {
   title?: string;
   subTitle?: string;
-  span?: string;
   desc?: string;
   button?: string;
+  image?: boolean;
 }
 
 interface NavProps {

@@ -3,7 +3,7 @@ import heroImage from '../../assets/img/bg.png';
 import heroMan from '../../assets/img/hero-man-pic.png';
 import Button from '../Button';
 
-const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
+const Hero = ({ title, subTitle, desc, button, image }: HeroProps): JSX.Element => {
   return (
     <section
       className='bg-cover z-50 bg-center flex justify-center items-center lg:min-h-[40vh] relative'
@@ -14,7 +14,7 @@ const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
         <div className='text-center w-full lg:w-1/2 max-w-xl py-10'>
           <h1 className='text-5xl lg:text-7xl text-white font-bold font-kanit tracking-wide p-4'>
             {title} <br />
-            <span className='text-orange-400 mt-6 tracking-widest'>{span}</span>
+            <span className='text-orange-400 mt-6 tracking-widest'>{subTitle}</span>
           </h1>
           <p className='text-xl text-white mt-4 p-3'>{desc}</p>
           {button && (
@@ -27,9 +27,11 @@ const Hero = ({ title, span, desc, button }: HeroProps): JSX.Element => {
             </Link>
           )}
         </div>
-        <div className='w-full lg:w-1/2 max-w-xl flex justify-end'>
-          <img className='h-full lg:rounded-full' src={heroMan} alt='' />
-        </div>
+        {image && (
+          <div className='w-full lg:w-1/2 max-w-xl flex justify-end'>
+            <img className='h-full lg:rounded-full' src={heroMan} alt='' />
+          </div>
+        )}
       </div>
       <div className='hidden md:block h-[150] z-[10] overflow-hidden absolute left-0 bottom-0 right-0'>
         <svg
