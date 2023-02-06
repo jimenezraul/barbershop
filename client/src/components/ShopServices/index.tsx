@@ -15,7 +15,7 @@ const ShopServices = () => {
       <div className='container mx-auto'>
         <div className='flex flex-wrap'>
           <div className='w-full'>
-            <h1 className='text-3xl lg:text-5xl font-bold text-center text-gray-700 mb-8'>
+            <h1 className='text-3xl lg:text-5xl font-bold font-kanit text-center text-gray-700 mb-8'>
               Our Services
             </h1>
           </div>
